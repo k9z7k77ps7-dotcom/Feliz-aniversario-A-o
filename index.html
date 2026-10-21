@@ -28,9 +28,15 @@
       cursor: pointer;
       box-shadow: 0 4px 12px #b34c7040;
       margin: 6px;
+      font-family: inherit;
     }
 
     button:hover { background: #c83e6b; }
+
+    button:focus-visible {
+      outline: 3px solid #74334d;
+      outline-offset: 3px;
+    }
 
     .pantalla {
       min-height: 100vh;
@@ -52,7 +58,10 @@
       50% { transform: scale(1.1); }
     }
 
-    #sorpresa { display: none; padding: 20px 14px 45px; }
+    #sorpresa {
+      display: none;
+      padding: 20px 14px 45px;
+    }
 
     .tarjeta {
       max-width: 760px;
@@ -82,15 +91,22 @@
       max-width: 230px;
     }
 
-    .regalo span { display: block; font-size: 32px; margin-bottom: 7px; }
+    .regalo span {
+      display: block;
+      font-size: 32px;
+      margin-bottom: 7px;
+    }
 
     .contenido-regalo {
       display: none;
       margin: 15px auto;
       max-width: 760px;
+      scroll-margin-top: 15px;
     }
 
-    .contenido-regalo.visible { display: block; }
+    .contenido-regalo.visible {
+      display: block;
+    }
 
     .carta {
       text-align: left;
@@ -107,6 +123,7 @@
     }
 
     .galeria img {
+      display: block;
       width: 100%;
       height: 230px;
       object-fit: cover;
@@ -114,21 +131,22 @@
       background: #ffe0eb;
     }
 
-    video {
+    audio {
       width: 100%;
-      max-width: 500px;
-      border-radius: 15px;
+      max-width: 420px;
     }
 
-    audio { width: 100%; max-width: 420px; }
-
-    .corazon { color: #e75480; font-size: 24px; }
+    .corazon {
+      color: #e75480;
+      font-size: 24px;
+    }
 
     footer { padding: 20px; }
 
     @media (max-width: 420px) {
       .galeria img { height: 170px; }
       .carta { font-size: 16px; }
+      .tarjeta { padding: 20px 14px; }
     }
   </style>
 </head>
@@ -140,7 +158,9 @@
     <h1>Para mi niña hermosa ❤️</h1>
     <p>Preparé algo muy especial para ti, mi amor. 🥹💗</p>
     <p>Un pequeño detalle para celebrar nuestros 5 meses.</p>
-    <button onclick="abrirSorpresa()">Abrir mi sorpresa ❤️</button>
+    <button type="button" onclick="abrirSorpresa()">
+      Abrir mi sorpresa ❤️
+    </button>
   </section>
 
   <main id="sorpresa">
@@ -150,10 +170,12 @@
     <section class="tarjeta">
       <h2>🎶 Nuestra música</h2>
       <p>Presiona reproducir y disfruta este detalle mientras lees mi carta. ❤️</p>
-      <audio id="musica" controls loop preload="auto">
+
+      <audio id="musica" controls loop preload="metadata">
         <source src="musica.mp3" type="audio/mpeg">
         Tu navegador no puede reproducir este audio.
       </audio>
+
       <p><small>Si no comienza sola, toca reproducir. 💕</small></p>
     </section>
 
@@ -161,16 +183,19 @@
     <p>Elige cada regalito, mi amor. 🥹</p>
 
     <div class="regalos">
-      <button class="regalo" onclick="mostrar('meses')">
+      <button type="button" class="regalo" onclick="mostrar('meses')">
         <span>💞</span>Nuestros 5 meses
       </button>
-      <button class="regalo" onclick="mostrar('carta')">
+
+      <button type="button" class="regalo" onclick="mostrar('carta')">
         <span>💌</span>Una carta para ti
       </button>
-      <button class="regalo" onclick="mostrar('recuerdos')">
+
+      <button type="button" class="regalo" onclick="mostrar('recuerdos')">
         <span>📸</span>Nuestros recuerdos
       </button>
-      <button class="regalo" onclick="mostrar('ano')">
+
+      <button type="button" class="regalo" onclick="mostrar('ano')">
         <span>🎆</span>Nuestro Año Nuevo
       </button>
     </div>
@@ -187,6 +212,7 @@
 
     <section id="carta" class="contenido-regalo tarjeta">
       <h2>💌 Para mi niña hermosa ❤️🥹</h2>
+
       <div class="carta">Mi amor, no sabes lo feliz que me hace poder escribirte estas palabras. A veces tengo tantas cosas que quisiera decirte que no sé ni por dónde empezar, porque siento que un simple “te amo” no alcanza para expresar todo lo que siento por ti. ❤️
 
 Hoy cumplimos 5 meses juntos, mi amor, 5 meses desde aquel 10 de julio de 2026, una fecha que siempre voy a guardar con mucho cariño por nuestra historia. 🥹💗 Y aunque tal vez para otras personas cinco meses no parezcan mucho, para mí significan un montón, porque en este tiempo tú me has demostrado que eres la indicada y te has convertido en alguien demasiado importante en mi vida.
@@ -208,12 +234,14 @@ Te amo muchísimo, mi morena. ¡Felices 5 meses y feliz fin de año! 💋💗
 Con todo mi cariño, para ti mvd ❤️🫶🏻
 
 Gracias por ser tú y por permitirme formar parte de tu vida. 🍁🌓</div>
+
       <p class="corazon">Con todo mi amor, para ti. ❤️</p>
     </section>
 
     <section id="recuerdos" class="contenido-regalo tarjeta">
       <h2>📸 Nuestros recuerdos</h2>
       <p>Cada foto guarda un pedacito de nuestra historia. 🥹</p>
+
       <div class="galeria">
         <img src="foto1.jpeg" alt="Nuestro recuerdo 1" loading="lazy">
         <img src="foto2.jpeg" alt="Nuestro recuerdo 2" loading="lazy">
@@ -246,23 +274,29 @@ Gracias por ser tú y por permitirme formar parte de tu vida. 🍁🌓</div>
       document.getElementById("inicio").style.display = "none";
       document.getElementById("sorpresa").style.display = "block";
 
+      // Intentamos iniciar la música; si el navegador lo bloquea,
+      // se puede reproducir con el control de audio.
       const musica = document.getElementById("musica");
-      musica.play().catch(() => {
-        // Si el navegador bloquea la música, ella puede pulsar reproducir.
-      });
+      musica.play().catch(() => {});
 
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     function mostrar(id) {
+      const elegido = document.getElementById(id);
+
+      if (!elegido) return;
+
       document.querySelectorAll(".contenido-regalo").forEach(seccion => {
         seccion.classList.remove("visible");
       });
 
-      const elegido = document.getElementById(id);
       elegido.classList.add("visible");
 
-      elegido.scrollIntoView({ behavior: "smooth", block: "start" });
+      elegido.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
     }
   </script>
 
