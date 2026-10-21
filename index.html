@@ -3,256 +3,268 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Para mi amor, Doris ❤️</title>
+  <meta name="theme-color" content="#ffe3ed">
+  <title>Para mi niña hermosa ❤️</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: Georgia, serif;
-      color: #65243e;
+      font-family: Georgia, "Times New Roman", serif;
+      color: #74334d;
+      background: linear-gradient(135deg, #fff0f5, #ffe0eb, #fff7f0);
       text-align: center;
-      background: linear-gradient(135deg, #ffe3ec, #fff5f7, #ffd1df);
       min-height: 100vh;
     }
 
-    header {
-      padding: 35px 15px 20px;
-    }
-
-    h1 {
-      color: #c2185b;
-      font-size: 2.2rem;
-    }
-
-    p {
-      line-height: 1.7;
-    }
-
-    main {
-      max-width: 850px;
-      margin: auto;
-      padding: 15px;
-    }
-
-    .panel {
-      background: rgba(255, 255, 255, 0.88);
-      padding: 22px;
-      margin: 18px 0;
-      border-radius: 20px;
-      box-shadow: 0 5px 18px #c65d7a25;
-    }
-
     button {
-      background: #d6336c;
-      color: white;
       border: none;
-      padding: 13px 18px;
-      margin: 7px;
       border-radius: 25px;
-      font-size: 1rem;
+      padding: 13px 20px;
+      background: #e75480;
+      color: white;
+      font-size: 16px;
       cursor: pointer;
+      box-shadow: 0 4px 12px #b34c7040;
+      margin: 6px;
     }
 
-    button:hover {
-      background: #ad2152;
+    button:hover { background: #c83e6b; }
+
+    .pantalla {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 25px 16px;
     }
 
-    .hidden {
+    h1 { color: #c83e6b; }
+
+    .sobre {
+      font-size: 75px;
+      animation: latido 1.5s infinite;
+    }
+
+    @keyframes latido {
+      50% { transform: scale(1.1); }
+    }
+
+    #sorpresa { display: none; padding: 20px 14px 45px; }
+
+    .tarjeta {
+      max-width: 760px;
+      margin: 20px auto;
+      padding: 24px 18px;
+      background: #ffffffd9;
+      border-radius: 22px;
+      box-shadow: 0 8px 25px #b34c7020;
+    }
+
+    .regalos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 20px auto;
+      max-width: 800px;
+    }
+
+    .regalo {
+      background: #fff;
+      color: #c83e6b;
+      border: 2px solid #f4b6ca;
+      border-radius: 18px;
+      padding: 15px;
+      flex: 1 1 135px;
+      max-width: 230px;
+    }
+
+    .regalo span { display: block; font-size: 32px; margin-bottom: 7px; }
+
+    .contenido-regalo {
       display: none;
+      margin: 15px auto;
+      max-width: 760px;
     }
 
-    .gallery {
+    .contenido-regalo.visible { display: block; }
+
+    .carta {
+      text-align: left;
+      line-height: 1.85;
+      white-space: pre-line;
+      overflow-wrap: anywhere;
+      font-size: 17px;
+    }
+
+    .galeria {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
-      margin-top: 18px;
     }
 
-    .gallery img {
+    .galeria img {
       width: 100%;
       height: 230px;
       object-fit: cover;
-      border-radius: 14px;
+      border-radius: 15px;
+      background: #ffe0eb;
     }
 
     video {
       width: 100%;
-      max-width: 600px;
-      border-radius: 14px;
-      margin-top: 12px;
-      background: #000;
+      max-width: 500px;
+      border-radius: 15px;
     }
 
-    .letter {
-      text-align: left;
-      white-space: pre-line;
-    }
+    audio { width: 100%; max-width: 420px; }
 
-    footer {
-      padding: 25px;
-    }
+    .corazon { color: #e75480; font-size: 24px; }
 
-    @media (max-width: 480px) {
-      .gallery img {
-        height: 160px;
-      }
+    footer { padding: 20px; }
 
-      h1 {
-        font-size: 1.8rem;
-      }
+    @media (max-width: 420px) {
+      .galeria img { height: 170px; }
+      .carta { font-size: 16px; }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>Para mi amor, Doris ❤️</h1>
-    <p>Un pequeño detalle hecho con todo mi corazón 💗</p>
-  </header>
 
-  <main>
-    <section class="panel" id="inicio">
-      <h2>💌 Tengo una sorpresa para ti</h2>
-      <p>Preparé algo especial para recordarte cuánto te quiero.</p>
-      <button onclick="abrirSorpresa()">
-        Abrir mi sorpresa 💖
-      </button>
+  <section class="pantalla" id="inicio">
+    <div class="sobre">💌</div>
+    <h1>Para mi niña hermosa ❤️</h1>
+    <p>Preparé algo muy especial para ti, mi amor. 🥹💗</p>
+    <p>Un pequeño detalle para celebrar nuestros 5 meses.</p>
+    <button onclick="abrirSorpresa()">Abrir mi sorpresa ❤️</button>
+  </section>
+
+  <main id="sorpresa">
+    <h1>Feliz aniversario, mi amor 💗</h1>
+    <p>Para mi Doris, mi nena hermosa 🌸</p>
+
+    <section class="tarjeta">
+      <h2>🎶 Nuestra música</h2>
+      <p>Presiona reproducir y disfruta este detalle mientras lees mi carta. ❤️</p>
+      <audio id="musica" controls loop preload="auto">
+        <source src="musica.mp3" type="audio/mpeg">
+        Tu navegador no puede reproducir este audio.
+      </audio>
+      <p><small>Si no comienza sola, toca reproducir. 💕</small></p>
     </section>
 
-    <div id="contenido" class="hidden">
-      <section class="panel">
-        <h2>🎁 Nuestros regalitos</h2>
-        <p>Abre cada regalo con mucho cariño, mi amor.</p>
+    <h2>🎁 Tus pequeños regalos</h2>
+    <p>Elige cada regalito, mi amor. 🥹</p>
 
-        <button onclick="mostrar('meses')">
-          💕 Nuestros 5 meses
-        </button>
-
-        <button onclick="mostrar('carta')">
-          💌 Una carta para ti
-        </button>
-
-        <button onclick="mostrar('recuerdos')">
-          📸 Nuestros recuerdos
-        </button>
-
-        <button onclick="mostrar('anoNuevo')">
-          ✨ Nuestro Año Nuevo
-        </button>
-      </section>
-
-      <section id="meses" class="panel hidden">
-        <h2>💕 Nuestros 5 meses</h2>
-        <p>
-          Mi amor, gracias por estos cinco meses tan especiales.
-          Cada momento contigo es un recuerdo que guardo
-          con muchísimo cariño. Espero que sigamos creando
-          muchos más momentos bonitos juntos. ❤️
-        </p>
-      </section>
-
-      <section id="carta" class="panel hidden">
-        <h2>💌 Una carta para mi Doris</h2>
-
-        <div class="letter">
-Mi amor, Doris ❤️
-
-Quiero que sepas lo especial que eres para mí.
-Desde que llegaste a mi vida, has hecho que muchos
-de mis días sean más bonitos.
-
-Gracias por tu cariño, por tus momentos conmigo
-y por cada recuerdo que hemos creado juntos.
-Aunque no siempre encuentre las palabras perfectas,
-quiero demostrarte lo mucho que significas para mí.
-
-Deseo que sigamos compartiendo sonrisas, sueños
-y momentos que podamos recordar con felicidad.
-
-Te quiero muchísimo, mi amor. ❤️
-
-Con todo mi cariño,
-Luis 💗
-        </div>
-      </section>
-
-      <section id="recuerdos" class="panel hidden">
-        <h2>📸 Nuestros recuerdos</h2>
-        <p>Unas fotitos especiales para nosotros. ❤️</p>
-
-        <div class="gallery">
-          <img src="foto1.jpeg" alt="Nuestro recuerdo 1">
-          <img src="foto2.jpeg" alt="Nuestro recuerdo 2">
-          <img src="foto3.jpeg" alt="Nuestro recuerdo 3">
-          <img src="foto4.jpeg" alt="Nuestro recuerdo 4">
-          <img src="foto5.jpeg" alt="Nuestro recuerdo 5">
-          <img src="foto6.jpeg" alt="Nuestro recuerdo 6">
-        </div>
-
-        <h3>🎶 Un recuerdo para escuchar</h3>
-        <p>
-          Mi amor, pulsa reproducir para ver y escuchar
-          este recuerdo especial. 💗
-        </p>
-
-        <video controls playsinline preload="metadata">
-          <source
-            src="recuerdo.mp4"
-            type="video/mp4">
-          Tu navegador no puede reproducir este video.
-        </video>
-
-        <p>
-          Si el video no carga, comprueba que recuerdo.mp4
-          esté subido al mismo repositorio que este archivo.
-        </p>
-      </section>
-
-      <section id="anoNuevo" class="panel hidden">
-        <h2>✨ Nuestro Año Nuevo</h2>
-        <p>
-          Mi deseo es seguir compartiendo contigo
-          muchos momentos felices, nuevas experiencias
-          y recuerdos que nos hagan sonreír. 💖
-        </p>
-        <p>Que vengan muchos momentos bonitos para nosotros. 🥂</p>
-      </section>
+    <div class="regalos">
+      <button class="regalo" onclick="mostrar('meses')">
+        <span>💞</span>Nuestros 5 meses
+      </button>
+      <button class="regalo" onclick="mostrar('carta')">
+        <span>💌</span>Una carta para ti
+      </button>
+      <button class="regalo" onclick="mostrar('recuerdos')">
+        <span>📸</span>Nuestros recuerdos
+      </button>
+      <button class="regalo" onclick="mostrar('ano')">
+        <span>🎆</span>Nuestro Año Nuevo
+      </button>
     </div>
-  </main>
 
-  <footer>
-    Hecho con mucho cariño para Doris ❤️
-  </footer>
+    <section id="meses" class="contenido-regalo tarjeta">
+      <h2>💗 Cinco meses contigo</h2>
+      <p>
+        Desde aquel 10 de julio de 2026, mi vida tiene recuerdos
+        que guardo con muchísimo cariño. Gracias por cada sonrisa,
+        cada abrazo y cada momento juntos. ¡Felices 5 meses, mi amor! 🥹❤️
+      </p>
+      <p class="corazon">Te elegiría una y mil veces. 💋</p>
+    </section>
+
+    <section id="carta" class="contenido-regalo tarjeta">
+      <h2>💌 Para mi niña hermosa ❤️🥹</h2>
+      <div class="carta">Mi amor, no sabes lo feliz que me hace poder escribirte estas palabras. A veces tengo tantas cosas que quisiera decirte que no sé ni por dónde empezar, porque siento que un simple “te amo” no alcanza para expresar todo lo que siento por ti. ❤️
+
+Hoy cumplimos 5 meses juntos, mi amor, 5 meses desde aquel 10 de julio de 2026, una fecha que siempre voy a guardar con mucho cariño por nuestra historia. 🥹💗 Y aunque tal vez para otras personas cinco meses no parezcan mucho, para mí significan un montón, porque en este tiempo tú me has demostrado que eres la indicada y te has convertido en alguien demasiado importante en mi vida.
+
+Gracias por llegar a mi vida, por regalarme tus sonrisas, por cada abrazo, cada beso, cada momento juntos y hasta por esas pequeñas cosas que quizás tú ni notas, pero que a mí me hacen feliz. Me encanta estar contigo, molestarte, hacerte reír y darte cariño. No sabes lo bonito que se siente tener a alguien como tú con quien compartir mis momentos. ❤️‍🩹
+
+Mi amor, quiero que sepas que no necesito que todo sea perfecto entre nosotros. Sé que tendremos días bonitos y otros en los que quizás no estemos de acuerdo, pero yo quiero que siempre podamos hablar, entendernos y apoyarnos. Quiero seguir aprendiendo de ti, conocerte cada día un poquito más y demostrarte con mis acciones que lo que siento por ti es sincero. No quiero que mis palabras se queden solamente en un mensaje bonito; quiero que también puedas sentir mi amor en la forma en que te trato y te cuido. 🫶🏻
+
+Y ahora que se acerca el fin de año, me pongo a pensar en todos los recuerdos que hemos creado y en lo bonito que sería seguir sumando muchos más contigo. No sé exactamente qué nos traerá el futuro, pero sí sé que me hace ilusión seguir compartiendo momentos a tu lado, tomar más fotos juntos, reírnos por cualquier tontería y crear recuerdos que algún día podamos mirar y decir: “Mira todo lo que hemos vivido juntos”. 🥹💘
+
+Quiero que nunca dudes de lo especial que eres para mí. Eres mi nena, mi amor bonito, mi compañera y esa persona que me saca una sonrisa con solo pensar en ella. Si alguna vez tienes un día difícil, quiero que recuerdes que no tienes que fingir estar bien conmigo. También quiero estar para ti cuando estés triste, cuando necesites hablar o simplemente cuando quieras que alguien te acompañe. No siempre voy a tener las palabras perfectas, pero quiero escucharte y hacer lo posible por verte sonreír. 🫂❤️
+
+Espero que termines este año con una sonrisa y que recuerdes que hay alguien que te quiere muchísimo y que se siente muy feliz de tenerte en su vida. 🌸
+
+Te amo por lo que eres, por cómo me haces sentir y por todo lo bonito que estamos construyendo juntos. Gracias por ser parte de mi historia. Y si pudiera pedir algo para este nuevo año, sería que la vida nos regale muchos momentos bonitos, mucha paciencia, mucho amor y muchísimas razones para seguir eligiéndonos. 🥹❤️
+
+Te amo muchísimo, mi morena. ¡Felices 5 meses y feliz fin de año! 💋💗
+
+Con todo mi cariño, para ti mvd ❤️🫶🏻
+
+Gracias por ser tú y por permitirme formar parte de tu vida. 🍁🌓</div>
+      <p class="corazon">Con todo mi amor, para ti. ❤️</p>
+    </section>
+
+    <section id="recuerdos" class="contenido-regalo tarjeta">
+      <h2>📸 Nuestros recuerdos</h2>
+      <p>Cada foto guarda un pedacito de nuestra historia. 🥹</p>
+      <div class="galeria">
+        <img src="foto1.jpeg" alt="Nuestro recuerdo 1" loading="lazy">
+        <img src="foto2.jpeg" alt="Nuestro recuerdo 2" loading="lazy">
+        <img src="foto3.jpeg" alt="Nuestro recuerdo 3" loading="lazy">
+        <img src="foto4.jpeg" alt="Nuestro recuerdo 4" loading="lazy">
+        <img src="foto5.jpeg" alt="Nuestro recuerdo 5" loading="lazy">
+        <img src="foto6.jpeg" alt="Nuestro recuerdo 6" loading="lazy">
+      </div>
+    </section>
+
+    <section id="ano" class="contenido-regalo tarjeta">
+      <h2>🎆 Un nuevo año contigo</h2>
+      <p>
+        Mi deseo para este nuevo año es que tengamos más momentos bonitos,
+        más risas, más fotos y muchas oportunidades para seguir creciendo
+        juntos. Que nunca nos falten el respeto, la paciencia y las ganas
+        de escucharnos. Feliz fin de año, mi amor. 🌸❤️
+      </p>
+      <p class="corazon">Por más recuerdos juntos. 🥂💗</p>
+    </section>
+
+    <footer>
+      <p>Hecho con muchísimo cariño para ti, Doris. ❤️</p>
+      <p>Felices 5 meses, mi niña hermosa. 💋</p>
+    </footer>
+  </main>
 
   <script>
     function abrirSorpresa() {
-      document.getElementById("contenido").classList.remove("hidden");
-      document.getElementById("inicio").classList.add("hidden");
+      document.getElementById("inicio").style.display = "none";
+      document.getElementById("sorpresa").style.display = "block";
+
+      const musica = document.getElementById("musica");
+      musica.play().catch(() => {
+        // Si el navegador bloquea la música, ella puede pulsar reproducir.
+      });
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     function mostrar(id) {
-      const secciones = [
-        "meses",
-        "carta",
-        "recuerdos",
-        "anoNuevo"
-      ];
-
-      secciones.forEach(function(seccion) {
-        document.getElementById(seccion).classList.add("hidden");
+      document.querySelectorAll(".contenido-regalo").forEach(seccion => {
+        seccion.classList.remove("visible");
       });
 
-      document.getElementById(id).classList.remove("hidden");
+      const elegido = document.getElementById(id);
+      elegido.classList.add("visible");
 
-      document.getElementById(id).scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
+      elegido.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   </script>
+
 </body>
 </html>
