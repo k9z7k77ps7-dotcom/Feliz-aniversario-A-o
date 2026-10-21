@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para mi amor, Doris ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;font-family:Georgia,serif;
+ background:linear-gradient(135deg,#ffe4ed,#fff5f7,#f9d5e5);
+ color:#74334d;text-align:center;min-height:100vh;
+}
+main{max-width:720px;margin:auto;padding:28px 18px 50px}
+h1{font-size:2.1rem}
+p{line-height:1.8}
+button{
+ border:0;border-radius:25px;padding:13px 20px;
+ background:#d94f83;color:white;font-size:1rem;
+ cursor:pointer;margin:8px;
+}
+.card{
+ background:#ffffffc9;border-radius:22px;padding:22px;
+ margin:20px 0;box-shadow:0 5px 18px #a94c7020;
+}
+.gifts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.gift{
+ background:#fff0f5;border:2px solid #f5b6cc;
+ border-radius:18px;padding:20px 8px;cursor:pointer;
+}
+.gift span{display:block;font-size:2.5rem;margin-bottom:8px}
+.hidden{display:none}
+img{max-width:100%;width:100%;border-radius:15px;margin-top:10px}
+.letter{white-space:pre-line;text-align:left}
+input{padding:12px;border:1px solid #e5a5bc;border-radius:12px}
+footer{margin-top:30px;font-size:.9rem}
+</style>
+</head>
+<body>
+<main>
+<section class="card" id="inicio">
+ <div style="font-size:3rem">💗</div>
+ <h1>Para mi amor, Doris</h1>
+ <p>Una pequeña sorpresa para la persona que hace mis días más bonitos.</p>
+ <p>💌 Felices 5 meses, mi vida 💌</p>
+ <button onclick="entrar()">Abrir mi sorpresa ❤️</button>
+</section>
+
+<section id="contenido" class="hidden">
+ <div class="card">
+  <h2>Cuatro regalitos para ti 🎁</h2>
+  <p>Abre cada regalo y descubre lo que preparé con mucho amor.</p>
+  <div class="gifts">
+   <button class="gift" onclick="abrir(0)"><span>🎁</span>Nuestros 5 meses</button>
+   <button class="gift" onclick="abrir(1)"><span>💌</span>Una carta para ti</button>
+   <button class="gift" onclick="abrir(2)"><span>📸</span>Nuestros recuerdos</button>
+   <button class="gift" onclick="abrir(3)"><span>✨</span>Nuestro Año Nuevo</button>
+  </div>
+ </div>
+
+ <section class="card hidden" id="regalo">
+  <h2 id="titulo"></h2>
+  <div id="detalle"></div>
+  <button onclick="cerrar()">Volver a los regalos 💗</button>
+ </section>
+
+ <section class="card">
+  <h2>🎶 Nuestra canción</h2>
+  <p>Reproduce nuestra música mientras disfrutas tu sorpresa.</p>
+  <audio id="musica" controls loop>
+   <source src="musica.mp3" type="audio/mpeg">
+   Tu navegador no puede reproducir este audio.
+  </audio>
+  <p><small>Pulsa reproducir para escuchar la canción.</small></p>
+ </section>
+ <footer>Hecho con mucho cariño para Doris ❤️</footer>
+</section>
+</main>
+
+<script>
+const fotos=["foto1.jpg","foto2.jpg","foto3.jpg","foto4.jpg"];
+
+const contenidos=[
+ {
+  titulo:"Felices 5 meses, mi amor ❤️",
+  texto:"Cinco meses de una historia que me hace muy feliz. Gracias por compartir conmigo tantos momentos especiales. Quiero que sigamos creando recuerdos bonitos y disfrutando cada etapa juntos. Te quiero muchísimo, Doris. 💗"
+ },
+ {
+  titulo:"Una carta para ti 💌",
+  texto:"Mi amor, Doris:\n\nQuiero que sepas lo especial que eres para mí. Estos cinco meses han significado mucho y me alegra poder compartir esta historia contigo.\n\nGracias por tus momentos, tus sonrisas y por todo lo bonito que vamos construyendo. No necesito que todo sea perfecto; deseo que sigamos aprendiendo, cuidándonos y apoyándonos.\n\nTe quiero muchísimo, mi vida. Felices cinco meses. ❤️"
+ },
+ {
+  titulo:"Nuestros recuerdos 📸",
+  fotos:true
+ },
+ {
+  titulo:"Feliz Año Nuevo, mi amor ✨",
+  texto:"Mi vida, deseo que el nuevo año llegue lleno de salud, alegría, sueños cumplidos y momentos hermosos para los dos. Ojalá tengamos muchas oportunidades para reír, aprender, apoyarnos y crear recuerdos que guardemos siempre en el corazón.\n\nGracias por formar parte de mi vida. Quiero seguir compartiendo contigo muchos momentos bonitos, paso a paso y con mucho cariño.\n\n¡Felices cinco meses y feliz Año Nuevo, Doris! ❤️🥂"
+ }
+];
+
+function entrar(){
+ document.getElementById("inicio").classList.add("hidden");
+ document.getElementById("contenido").classList.remove("hidden");
+}
+function abrir(i){
+ document.getElementById("titulo").textContent=contenidos[i].titulo;
+ const detalle=document.getElementById("detalle");
+ detalle.innerHTML="";
+ if(contenidos[i].fotos){
+  fotos.forEach((foto,n)=>{
+   const img=document.createElement("img");
+   img.src=foto;
+   img.alt="Nuestro recuerdo "+(n+1);
+   img.onerror=()=>{img.alt="Falta subir "+foto;img.style.display="none"};
+   detalle.appendChild(img);
+  });
+ }else{
+  const p=document.createElement("p");
+  p.className="letter";
+  p.textContent=contenidos[i].texto;
+  detalle.appendChild(p);
+ }
+ document.getElementById("regalo").classList.remove("hidden");
+ document.getElementById("regalo").scrollIntoView({behavior:"smooth"});
+}
+function cerrar(){
+ document.getElementById("regalo").classList.add("hidden");
+}
+</script>
+</body>
+</html>
